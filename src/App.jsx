@@ -56,6 +56,7 @@ class IssueAdd extends React.Component {
   }
 }
 
+// step 1: get issues data
 const issues = [
   {
     id: 1,
@@ -80,8 +81,14 @@ const issues = [
 class IssueList extends React.Component {
   constructor() {
     super();
+    // step 2: initialize the issues state with the initial data
     this.state = { issues: issues };
     setTimeout(this.createTestIssue.bind(this), 2000);
+
+    // this.createTestIssue = this.createTestIssue.bind(this);
+    // setTimeout(this.createTestIssue, 2000);
+
+    // setTimeout(() => {this.createTestIssue()}, 2000);
   }
 
   createIssue(newIssue) {
@@ -106,6 +113,7 @@ class IssueList extends React.Component {
         <h1>Issue Tracker</h1>
         <IssueFilter />
         <hr />
+        {/* step 3: pass the issues in state to the table via props */}
         <IssueTable issues={this.state.issues} />
         <hr />
         <IssueAdd />

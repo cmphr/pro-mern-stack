@@ -188,6 +188,9 @@ var IssueAdd = function (_React$Component4) {
   return IssueAdd;
 }(React.Component);
 
+// step 1: get issues data
+
+
 var issues = [{
   id: 1,
   status: 'Open',
@@ -212,10 +215,16 @@ var IssueList = function (_React$Component5) {
   function IssueList() {
     _classCallCheck(this, IssueList);
 
+    // step 2: initialize the issues state with the initial data
     var _this5 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
     _this5.state = { issues: issues };
     setTimeout(_this5.createTestIssue.bind(_this5), 2000);
+
+    // this.createTestIssue = this.createTestIssue.bind(this);
+    // setTimeout(this.createTestIssue, 2000);
+
+    // setTimeout(() => {this.createTestIssue()}, 2000);
     return _this5;
   }
 
