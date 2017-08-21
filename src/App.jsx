@@ -49,9 +49,34 @@ class IssueTable extends React.Component {
 }
 
 class IssueAdd extends React.Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    var form = document.forms.issueAdd;
+    this.props.createIssue({
+      owner: form.owner.value,
+      title: form.title.value,
+      status: 'New',
+      created: new Date()
+    });
+
+    form.owner.value = "";
+    form.title.value = "";
+  }
+  
   render() {
     return (
-      <div>This is a placeholder for an issue add form.</div>
+      <div>
+        <form name="issueAdd" onSubmit={this.handleSubmit}>
+          <input type="text" name="owner" placeholder="Owner" />
+          <input type="text" name="title" placeholder="Title" />
+          <button>Add</button>
+        </form>
+      </div>
     );
   }
 }
@@ -81,14 +106,8 @@ const issues = [
 class IssueList extends React.Component {
   constructor() {
     super();
-    // step 2: initialize the issues state with the initial data
     this.state = { issues: [] };
-    // setTimeout(this.createTestIssue.bind(this), 2000);
-
-    this.createTestIssue = this.createTestIssue.bind(this);
-    setTimeout(this.createTestIssue, 2000);
-
-    // setTimeout(() => {this.createTestIssue()}, 2000);
+    this.createIssue = this.createIssue.bind(this);
   }
 
   componentDidMount() {
@@ -108,26 +127,15 @@ class IssueList extends React.Component {
     this.setState({ issues: newIssues });
   }
 
-  createTestIssue() {
-    this.createIssue({
-      status: 'New',
-      owner: 'Jilly',
-      created: new Date(),
-      title: 'Completion date should be optional'
-    });
-  }
-  
   render() {
     return (
       <div>
         <h1>Issue Tracker</h1>
         <IssueFilter />
         <hr />
-        {/* step 3: pass the issues in state to the table via props */}
         <IssueTable issues={this.state.issues} />
-        <button onClick={this.createTestIssue}>Add</button>
         <hr />
-        <IssueAdd />
+        <IssueAdd createIssue={this.createIssue} />
       </div>
     );
   }
