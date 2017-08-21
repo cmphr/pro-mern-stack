@@ -8,22 +8,17 @@ class IssueFilter extends React.Component {
   }
 }
 
-class IssueRow extends React.Component {
-  render() {
-    const issue = this.props.issue;
-    return (
-      <tr>
-        <td>{issue.id}</td>
-        <td>{issue.status}</td>
-        <td>{issue.owner}</td>
-        <td>{issue.created.toDateString()}</td>
-        <td>{issue.effort}</td>
-        <td>{issue.completionDate ? issue.completionDate.toDateString() : ''}</td>
-        <td>{issue.title}</td>
-      </tr>
-    );
-  }
-}
+const IssueRow = (props) => (
+    <tr>
+      <td>{props.issue.id}</td>
+      <td>{props.issue.status}</td>
+      <td>{props.issue.owner}</td>
+      <td>{props.issue.created.toDateString()}</td>
+      <td>{props.issue.effort}</td>
+      <td>{props.issue.completionDate ? props.issue.completionDate.toDateString() : ''}</td>
+      <td>{props.issue.title}</td>
+    </tr>
+);
 
 class IssueTable extends React.Component {
   render() {
