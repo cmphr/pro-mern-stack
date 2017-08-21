@@ -85,10 +85,10 @@ class IssueList extends React.Component {
     this.state = { issues: [] };
     // setTimeout(this.createTestIssue.bind(this), 2000);
 
-    // this.createTestIssue = this.createTestIssue.bind(this);
-    // setTimeout(this.createTestIssue, 2000);
+    this.createTestIssue = this.createTestIssue.bind(this);
+    setTimeout(this.createTestIssue, 2000);
 
-    setTimeout(() => {this.createTestIssue()}, 2000);
+    // setTimeout(() => {this.createTestIssue()}, 2000);
   }
 
   componentDidMount() {
@@ -125,6 +125,7 @@ class IssueList extends React.Component {
         <hr />
         {/* step 3: pass the issues in state to the table via props */}
         <IssueTable issues={this.state.issues} />
+        <button onClick={this.createTestIssue}>Add</button>
         <hr />
         <IssueAdd />
       </div>
