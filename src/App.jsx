@@ -82,13 +82,23 @@ class IssueList extends React.Component {
   constructor() {
     super();
     // step 2: initialize the issues state with the initial data
-    this.state = { issues: issues };
-    setTimeout(this.createTestIssue.bind(this), 2000);
+    this.state = { issues: [] };
+    // setTimeout(this.createTestIssue.bind(this), 2000);
 
     // this.createTestIssue = this.createTestIssue.bind(this);
     // setTimeout(this.createTestIssue, 2000);
 
-    // setTimeout(() => {this.createTestIssue()}, 2000);
+    setTimeout(() => {this.createTestIssue()}, 2000);
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData() {
+    setTimeout(() => { // simulate an ajax call
+      this.setState({ issues: issues });
+    }, 500);
   }
 
   createIssue(newIssue) {
