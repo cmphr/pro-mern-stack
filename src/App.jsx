@@ -20,9 +20,8 @@ const IssueRow = (props) => (
     </tr>
 );
 
-class IssueTable extends React.Component {
-  render() {
-    const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue} />);
+function IssueTable(props) {
+    const issueRows = props.issues.map(issue => <IssueRow key={issue.id} issue={issue} />);
 
     return (
       <table className="bordered-table">
@@ -40,7 +39,6 @@ class IssueTable extends React.Component {
         <tbody>{issueRows}</tbody>
       </table>
     );
-  }
 }
 
 class IssueAdd extends React.Component {
