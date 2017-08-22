@@ -134,5 +134,4 @@ class IssueList extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <IssueList />, contentNode);
+ReactDOM.render(<IssueList />, contentNode);
