@@ -74,28 +74,6 @@ class IssueAdd extends React.Component {
   }
 }
 
-// step 1: get issues data
-const issues = [
-  {
-    id: 1,
-    status: 'Open',
-    owner: 'Jim',
-    created: new Date('2017-08-02'),
-    effort: 5,
-    completionDate: undefined,
-    title: 'Error in console when clicking Add'
-  },
-  {
-    id: 2,
-    status: 'Assigned',
-    owner: 'Jen',
-    created: new Date('2017-08-01'),
-    effort: 14,
-    completionDate: new Date('2017-08-12'),
-    title: 'Missing bottom border on panel'
-  }
-];
-
 class IssueList extends React.Component {
   constructor() {
     super();
