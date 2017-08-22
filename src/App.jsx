@@ -101,11 +101,6 @@ class IssueList extends React.Component {
     .catch(err => {
       console.log(err);
     });
-
-
-    setTimeout(() => { // simulate an ajax call
-      this.setState({ issues: issues });
-    }, 500);
   }
 
   createIssue(newIssue) {

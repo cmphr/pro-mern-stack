@@ -222,11 +222,6 @@ var IssueList = function (_React$Component3) {
       }).catch(function (err) {
         console.log(err);
       });
-
-      setTimeout(function () {
-        // simulate an ajax call
-        _this4.setState({ issues: issues });
-      }, 500);
     }
   }, {
     key: "createIssue",
