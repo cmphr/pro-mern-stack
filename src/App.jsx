@@ -86,6 +86,23 @@ class IssueList extends React.Component {
   }
 
   loadData() {
+    fetch('/api/issues')
+    .then(response => response.json())
+    .then(data => {
+      console.log("Total count of records:", data._metadata.total_count);
+      data.records.forEach(issue => {
+        issue.created = new Date(issue.created);
+        if (issue.completionDate) {
+          issue.completionDate = new Date(issue.completionDate);
+        }
+      });
+      this.setState({issues: data.records});
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+
     setTimeout(() => { // simulate an ajax call
       this.setState({ issues: issues });
     }, 500);
